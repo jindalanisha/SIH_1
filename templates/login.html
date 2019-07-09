@@ -1,0 +1,53 @@
+{% load static %}
+<html lang="en">
+<head>
+  <style>
+  #bg {
+    width: 90%;
+    height: 1000px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  </style>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+</head>
+<body>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav navbar-right">
+        <li ><a href="/firstapp" > Home </a></li>
+        <li><a href="/firstapp/about" > About </a></li>
+      </ul>
+    </div>
+  </nav>
+  <br><br>
+<center>  <h1>Hey , good to see you again !</h1><center>
+  <br><br>
+  <br>
+  <center><div id='bg' style="background-image: url({% static 'firstapp_images/login.png' %});max-width:100%;" >
+
+
+  <br><br>
+    <br><br>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+
+        {% endfor %}
+    {% endif %}
+    <center>
+    <form method="POST">
+        {% csrf_token %}
+      <table border="0" style="border-collapse: separate;border-spacing: 2em;">
+           {{ form.as_table }}
+      </table>
+        <input type='submit' value=' Login '> </input>
+    </form>
+  </center>
+</body>
+</html>
